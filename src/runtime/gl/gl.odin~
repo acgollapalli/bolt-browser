@@ -1,0 +1,12 @@
+/*
+
+SDG                                                                            JJ
+
+This is  an implemntation of the wasl_gl standard. It is to be proposed as part
+of WASI as something that may be implemented by all WebAssembly runtimes.
+
+It will probably need to be broken out into its own repo eventually.
+
+*/
+
+package wasi_gl

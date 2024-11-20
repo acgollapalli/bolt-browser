@@ -1,0 +1,34 @@
+#+TITLE: Bolt Browser
+
+* BOLT Browser
+An extensible browser for Interactive Hypermedia.
+** Interactive HyperMedia: The World-Wide Web of Games
+With Web Assembly, WebAudio, GamePad Input, WebGL and WebGPU, we can deploy any game, anywhere with near native performance.
+While the browser is the most readily available and readily accessible for this, it is also limiting for the usecase of games.
+** Networking Between Games.
+Games should be able to link between one anotheer and seamlessly transition players between games. In a browser, this would be a page reload, or else, a portal, which players must log into as their home portal. In our own browser, this could be handled via handoff between services without any intermediary service on the part of the user. We intend to provide apis to support this, with accompanying header files (or WITs) and to propose these as web-standards in the future. 
+** Large Games in the Browser
+In order to play large modern games, assets and textures need to be loaded on an as-needed basis, streamed in from the cloud, and cached on an as-needed basis. In addition, game-implementations need to be able to reliably send data to their servers for multiplayer games, and especially large-persistent world type games (games like Minecraft, Rust, WoW). The user can stream in world-state as well as assets limited to (optimistically) only the parts of the game that they actually need to worry about rendering.
+** WASI and then file cache
+Modern games can stream in textures and assets directly from CDN at run time. Doing this in the browser and storing the assets as blobs in IndexedDb is certainly possible, however, it's not ideal. Games use LOTs of assets, and using IndexedDB can take an order of magnitude longer than a regular file system.
+Instead if we just expose the regular file system and treeat it like a normal cache with in-use/free semantics, we can get much faster speeds for our asset caches. This is possible using web assembly with the WASI-sdk
+** Netowrked games and the browser
+The widely deployed solution for gaming in the browser is still HTTP2 with websockets. WebTransport in HTTP3 exists, however it is not available on Safari, as such, the kind of fast, unordered transport of data that games rely on is not available on macs. Using a browser dedicated to this media circumvents this.
+** GPU availability
+The core aspect to an interactive web is that graphics APIs must be available, and they must be avaialble by default. Hardware must be available to web-based applications at near native speeds. Developing our own browser specifically for Interactive HyperMedia (games) circumvents this.
+
+* Goals
+** Support any game that can be compiled with Emscripten
+** Support GamePads, Mouse Input, Keyboard Input and TouchPad input
+** Support Transition from one game to another using hand-off mechanics with continuity in gameplay
+** Support QUIC for server-side real-time Gaming
+** Support dynamic loading and caching of assets from CDN directly to the GPU
+** Support dynamic loading and caching of audio and video
+** Support dynamic loading of wasm bundles for games along with incremental compilation and AOT compilation
+** Support the component model for WASI runtimes
+** Introduce a new protocol and standard for Interactive HyperMedia (IAHP) and be one of the interoperable implementations. 
+* Non-Goals
+** Supporting HTML and CSS
+The number of web standards required to write a conformant browser is immense. So we won't.
+** Supporting JavaScript
+The primary mode of code and data in the BOLT Browser will be WASM. Anything that is not WASM will be treated as an asset, and loaded into a wasm runtime.

@@ -1,0 +1,23 @@
+/*
+
+SDG                                                                            JJ
+
+Bindings to the WASM Micro Runtime (WAMR)
+
+The wasm-micro-runtime can be found at:
+    https://github.com/bytecodealliance/wasm-micro-runtime
+
+If you cloned the submodules, the source code for the wamr can be conveniently 
+found in:
+    external/wasm-micro-runtime/
+
+You'll need to build the library for your target platform. The header files 
+may be found in:
+    external/wasm-micro-runtime/core/iwasm/include/
+
+Currently we only use wasm_export.h
+
+*/
+
+package wamr
+
