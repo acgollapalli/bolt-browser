@@ -61,7 +61,7 @@ foreign libiwasm {
 }
 
 // some utility functions to make our life a bit easier
-bounds_check :: proc(exec_env: ExecEnv, data: int, size: int) -> (data_nativePtr: rawptr, ok: bool) {
+bounds_check :: proc(exec_env: ExecEnv, data: int, #any_int size: int) -> (data_nativePtr: rawptr, ok: bool) {
 	module := runtime_get_module_inst(exec_env)
 	data_wasmPtr := transmute(u64)data
 	size_sizePtr := transmute(u64)size

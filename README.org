@@ -32,3 +32,12 @@ The core aspect to an interactive web is that graphics APIs must be available, a
 The number of web standards required to write a conformant browser is immense. So we won't.
 ** Supporting JavaScript
 The primary mode of code and data in the BOLT Browser will be WASM. Anything that is not WASM will be treated as an asset, and loaded into a wasm runtime.
+
+* Todo list
+** TODO Implement Component Model in WAMR
+** TODO Implement Some nicer way of interacting with modules (wasi_gl, wasi_gfx, etc. ), maybe a WIT directive
+** TODO turn wasi_gl into an actual wasi proposal
+*** TODO write header
+*** TODO make WIT
+*** TODO make proposal template
+*** TODO make demos
